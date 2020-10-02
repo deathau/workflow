@@ -1,6 +1,10 @@
 on:
   rss:
-    url: https://hnrss.org/newest?points=300&count=3
+    url: https://www.ozbargain.com.au/cat/gaming/feed
+    config:
+      filter:
+        title:
+          $regex: free
 jobs:
   print:
     name: Print
