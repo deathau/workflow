@@ -19,3 +19,18 @@ jobs:
           echo title: $title
           echo contentSnippet: $contentSnippet
           echo link: $link
+  mail:
+    name: Send mail
+    uses: dawidd6/action-send-mail@v2
+    with:
+      server_address: smtp.gmail.com
+      server_port: 465
+      username: ${{secrets.MAIL_USERNAME}}
+      password: ${{secrets.MAIL_PASSWORD}}
+      subject: [OzBargain] ${{on.rss.outputs.title}}
+      # Literal body:
+      body: ${{on.rss.outputs.link}} <br> ${{on.rss.outputs.contentSnippet}}
+      to: death.au@gmail.com
+      from: death.au@gmail.com
+      # Optional content type (defaults to text/plain):
+      content_type: text/html
