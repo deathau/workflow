@@ -1,6 +1,10 @@
 on:
   rss:
     url: https://www.ozbargain.com.au/cat/gaming/feed
+    config:
+      filter:
+        title:
+          $regex: free
 jobs:
   mail:
     name: Send mail
