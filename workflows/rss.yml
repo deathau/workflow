@@ -17,7 +17,7 @@ jobs:
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: "[OzBargain] ${{on.rss.outputs.title}}"
-          body: "${{on.rss.outputs.link}} <br> ${{on.rss.outputs.contentSnippet}}"
+          body: "<a href='${{on.rss.outputs.link}}'>${{on.rss.outputs.link}}</a> <br> ${{on.rss.outputs.contentSnippet}}"
           to: death.au@gmail.com
           from: death.au@gmail.com
           content_type: text/html
