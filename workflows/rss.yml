@@ -1,24 +1,7 @@
 on:
   rss:
     url: https://www.ozbargain.com.au/cat/gaming/feed
-    config:
-      filter:
-        title:
-          $regex: free
 jobs:
-  print:
-    name: Print
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Outputs
-        env:
-          title: ${{on.rss.outputs.title}}
-          contentSnippet: ${{on.rss.outputs.contentSnippet}}
-          link: ${{on.rss.outputs.link}}
-        run: |
-          echo title: $title
-          echo contentSnippet: $contentSnippet
-          echo link: $link
   mail:
     name: Send mail
     runs-on: ubuntu-latest
@@ -29,8 +12,8 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: "[OzBargain] ${{on.rss.outputs.title}} ${{on.rss.outputs.link}} !"
-          body: "${{on.rss.outputs.contentSnippet}} !"
+          subject: "[OzBargain] ${{on.rss.outputs.title}}"
+          body: "${{on.rss.outputs.link}} <br> ${{on.rss.outputs.contentSnippet}}"
           to: death.au@gmail.com
           from: death.au@gmail.com
           content_type: text/html
