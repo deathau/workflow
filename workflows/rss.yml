@@ -4,7 +4,7 @@ on:
     config:
       filter:
         title:
-          $regex: free
+          $regex: (F|f)ree
 jobs:
   mail:
     name: Send mail
